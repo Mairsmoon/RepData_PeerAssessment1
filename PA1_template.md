@@ -20,20 +20,6 @@ Second, change "date" from character vector to Date vector using lubridate packa
 
 ``` r
 library(lubridate) 
-```
-
-```
-## 
-## 다음의 패키지를 부착합니다: 'lubridate'
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     date, intersect, setdiff, union
-```
-
-``` r
 data$date <- ymd(data$date)
 ```
 
@@ -42,26 +28,6 @@ Here is the histogram of total number of steps taken each day.
 
 ``` r
 library(dplyr)
-```
-
-```
-## 
-## 다음의 패키지를 부착합니다: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-``` r
 data.1 <- data %>% 
         group_by(date) %>% 
         summarize(total_steps = sum(steps, na.rm=TRUE), .groups="drop")
@@ -71,7 +37,7 @@ data.1 <- data %>%
 hist(data.1$total_steps) # histogram of total number of steps taken each day 
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![plot of chunk unnamed-chunk-64](figure/unnamed-chunk-64-1.png)
   
 Now let's calculate the mean and median of steps taken per day. 
 
@@ -107,7 +73,7 @@ plot1 <- ggplot(data.2, aes(x=interval, y=average_steps)) +
 plot1
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![plot of chunk unnamed-chunk-66](figure/unnamed-chunk-66-1.png)
   
 Which 5-minute interval contains the maximum number of steps?
 
@@ -147,7 +113,7 @@ data.4 <- data.3 %>%
 hist(data.4$total_steps)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![plot of chunk unnamed-chunk-70](figure/unnamed-chunk-70-1.png)
   
 Let's also calculate the mean and median of steps taken per day. 
 
@@ -198,5 +164,4 @@ plot2 <- ggplot(data.6, aes(x=interval, y=average_steps)) +
 plot2
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
-
+![plot of chunk unnamed-chunk-73](figure/unnamed-chunk-73-1.png)
